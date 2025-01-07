@@ -1,0 +1,148 @@
+<%- include("../layouts/adminHeader") %>
+
+    <!-- Main Sidebar Container -->
+    <%- include("../layouts/adminAside") %>
+
+
+        <style>
+            .popup_window {
+                height: 50vh;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .popup {
+                animation: scale-up-center 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate-reverse backwards;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 32px;
+                /* padding-top: 56px; */
+                border-radius: 20px;
+                background: #FFF;
+                text-align: center;
+                width: 287px;
+                height: 252px;
+            }
+
+            .popup__title {
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .popup__text {
+                max-width: 340px;
+                padding-top: 16px;
+                padding-bottom: 32px;
+                color: #777;
+                font-weight: 400;
+                line-height: 150%;
+                /* 24px */
+            }
+
+            .popup__action {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+            }
+
+            .btn {
+                padding: 10px 30px;
+                color: #FFF;
+                font-weight: 500;
+                border: none;
+                border-radius: 7px;
+                background: #027FFF;
+                cursor: pointer;
+            }
+
+            .btn:focus {
+                outline: 2px dashed #027FFF;
+                outline-offset: 5px;
+            }
+
+            .btn.secondary {
+                color: #00031E;
+                background: #EBF6FD;
+            }
+
+            h3.popup__title {
+                margin:26px 0px 30px 0px;
+
+            }
+
+            @keyframes scale-up-center {
+                0% {
+                    -webkit-transform: scale(0.95);
+                    transform: scale(0.95);
+                }
+
+                100% {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+        </style>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <%= code %>
+                        <% if(code ==1){%>
+                            <% if(data !== undefined){%>
+                                <div class="popup_window">
+                                    <div class="inner_popup">
+                                        <div class="popup">
+                                            <img width="71"
+                                                src="http://localhost:3333/uploads\img_upload-1701956199964-91641746-check-mark (1).png"
+                                                alt="">
+                                            <h3 class="popup__title"><%= message %></h3>
+
+                                            <div class="popup__action">
+                                                <a href="<%= currentRoute %>"><button class="btn">Ok</button></a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }} else if (code ==0) { %>
+                                    <div class="popup_window">
+                                        <div class="inner_popup">
+                                            <div class="popup">
+                                                <img width="71"
+                                                    src="http://localhost:3333/uploads\img_upload-1702015518776-114022547-remove.png"
+                                                    alt="">
+                                                <h3 class="popup__title"><%= message %></h3>
+
+                                                <div class="popup__action">
+                                                    <a href="<%= currentRoute %>"><button class="btn">Ok</button></a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }else{ %>
+                                    <div class="popup_window">
+                                        <div class="inner_popup">
+                                        <p style="text-align: center;"> <a href="/">Goto Home page</a></p>
+                                        </div>
+                                    </div>
+                                <% } %>
+                                            <!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+
+        <%- include("../layouts/adminFooter") %>

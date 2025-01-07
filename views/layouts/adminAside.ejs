@@ -1,0 +1,326 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/backend/dashboard" class="brand-link">
+        <img src="../uploads/assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="../uploads/assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a class="d-block">Hi,   <% if (userData !== undefined) { %> <%= userData.first_name %> <% } %></a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item">
+                    <a href="/backend/dashboard" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                            <span class="badge badge-info right">2</span>
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item <%= (currentRoute === '/all-website' || currentRoute === '/add-website' ) ? 'menu-is-opening menu-open' : '' %>">
+                    <a href="#" class="nav-link <%= (currentRoute === '/all-website' || currentRoute === '/add-website' ) ? 'active' : '' %>">
+                        <i class="nav-icon fas fa-globe"></i>
+                        <p>
+                            Websites
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/backend/all-website" class="nav-link <%= (currentRoute === '/all-website' ) ? 'active' : '' %>">
+                                <i class="fab fa-fantasy-flight-games nav-icon"></i>
+                                <p>All Websites</p>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="/backend/add-website" class="nav-link <%= (currentRoute === '/add-website' ) ? 'active' : '' %>" >
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item <%= (currentRoute === '/all-matches' || currentRoute === '/add-matches' ) ? 'menu-is-opening menu-open' : '' %>">
+                    <a href="#" class="nav-link <%= (currentRoute === '/all-matches' || currentRoute === '/add-matches' ) ? 'active' : '' %>">
+                        <i class="nav-icon fas fa-hashtag"></i>
+                        <p>
+                             Matches
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/backend/all-matches" class="nav-link <%= (currentRoute === '/all-matches' ) ? 'active' : '' %>">
+                                <i class="fab fa-fantasy-flight-games nav-icon"></i>
+                                <p>All Matches</p>
+                            </a>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a href="/backend/add-matches" class="nav-link <%= (currentRoute === '/add-matches' ) ? 'active' : '' %>" >
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+               
+
+                <li class="nav-item <%= (currentRoute === '/all-promotions' || currentRoute === '/add-promotions' ) ? 'menu-is-opening menu-open' : '' %>">
+                    <a href="#" class="nav-link <%= (currentRoute === '/all-promotions' || currentRoute === '/add-promotions' ) ? 'active' : '' %>">
+                        <i class="nav-icon fas fa-hashtag"></i>
+                        <p>
+                             Promotions
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/backend/all-promotions" class="nav-link <%= (currentRoute === '/all-promotions' ) ? 'active' : '' %>">
+                                <i class="fab fa-fantasy-flight-games nav-icon"></i>
+                                <p>All Promotions</p>
+                            </a>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a href="/backend/add-promotions" class="nav-link <%= (currentRoute === '/add-promotions' ) ? 'active' : '' %>" >
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+               
+
+                <li class="nav-item <%= (currentRoute === '/all-teams' || currentRoute === '/add-teams' ) ? 'menu-is-opening menu-open' : '' %>">
+                    <a href="#" class="nav-link <%= (currentRoute === '/all-teams' || currentRoute === '/add-teams' ) ? 'active' : '' %>">
+                        <i class="fas fa-user-plus nav-icon"></i>
+                        <p>
+                            Teams
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-danger right">New</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/backend/all-teams" class="nav-link <%= (currentRoute === '/all-teams') ? 'active' : '' %>">
+                                <i class="fas fa-list-ul nav-icon"></i>
+                                <p>All Teams</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/backend/add-teams" class="nav-link <%= (currentRoute === '/add-teams') ? 'active' : '' %>">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item <%= (currentRoute === '/all-media'  || currentRoute === '/add-media') ? 'menu-is-opening menu-open' : '' %>">
+                    <a href="#" class="nav-link <%= (currentRoute === '/all-media'  || currentRoute === '/add-media') ? 'active' : '' %>">
+                        <i class="fas fa-photo-video nav-icon"></i>
+                        <p>
+                            Media
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/backend/all-media" class="nav-link <%= (currentRoute === '/all-media') ? 'active' : '' %>">
+                                <i class="fas fa-list-ul nav-icon"></i>
+                                <p>All Media</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/backend/add-media" class="nav-link <%= (currentRoute === '/add-media') ? 'active' : '' %>">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item <%= (currentRoute === '/all-packages' || currentRoute === '/add-package' ) ? 'menu-is-opening menu-open' : '' %>">
+                    <a href="#" class="nav-link <%= (currentRoute === '/all-packages' || currentRoute === '/add-package' ) ? 'active' : '' %>">
+                        <i class="fas fa-archive nav-icon "></i>
+                        <p>
+                            Packages
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">4</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/backend/all-packages" class="nav-link <%= (currentRoute === '/all-packages') ? 'active' : '' %>">
+                                <i class="fas fa-list-ul nav-icon"></i>
+                                <p>All Packages</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/backend/add-package" class="nav-link <%= (currentRoute === '/add-package') ? 'active' : '' %>">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="/backend/all-transactions" class="nav-link <%= (currentRoute === '/all-transactions') ? 'active' : '' %>" >
+                        <i class="fas fa-exchange-alt  nav-icon"></i>
+                        <p>
+                            Transactions
+                            <span class="badge badge-info right">4</span>
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/backend/all-order" class="nav-link <%= (currentRoute === '/all-order') ? 'active' : '' %>" >
+                        <i class="fas fa-sort-amount-up-alt nav-icon"></i>
+                        <p>
+                            Orders
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item <%= (currentRoute === '/all-packages' || currentRoute === '/add-package' ) ? 'menu-is-opening menu-open' : '' %>">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-award nav-icon"></i>
+                        <p>
+                            Subcriptions
+                            <i class="fas fa-angle-left right"></i>
+                            
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-list-ul nav-icon"></i>
+                                <p>All Subcriptions</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- blog -->
+                <li class="nav-item <%= (currentRoute === '/all-blog' || currentRoute === '/add-blog' || currentRoute === '/add-blog-category' || currentRoute === '/add-blog-tag' ) ? 'menu-is-opening menu-open' : '' %>">
+                    <a href="#" class="nav-link <%= (currentRoute === '/all-blog' || currentRoute === '/add-blog' || currentRoute === '/add-blog-category' || currentRoute === '/add-blog-tag' )  ? 'active' : '' %>">
+                        <i class="fas fa-grin-hearts nav-icon"></i>
+                        <p>
+                            Blogs
+                            <i class="fas fa-angle-left right"></i>
+                           
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/backend/all-blog" class="nav-link <%= (currentRoute === '/all-blog') ? 'active' : '' %>">
+                                <i class="fas fa-list-ul nav-icon"></i>
+                                <p>All blogs</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/backend/add-blog" class="nav-link <%= (currentRoute === '/add-blog') ? 'active' : '' %>">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/backend/add-blog-category" class="nav-link <%= (currentRoute === '/add-blog-category') ? 'active' : '' %>">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/backend/add-blog-tag" class="nav-link <%= (currentRoute === '/add-blog-tag') ? 'active' : '' %>">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add Tag</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+               
+                <li class="nav-header">Extra</li>
+                <li class="nav-item">
+                    <a href="/backend/all-customers" class="nav-link <%= (currentRoute === '/all-customers') ? 'active' : '' %>">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            All Customers
+                            <span class="badge badge-info right">2</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="/backend/all-customers" class="nav-link">
+                        <i class="nav-icon far fa-envelope"></i>
+                        <p>
+                            All Customers
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pages/mailbox/mailbox.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Inbox</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/mailbox/compose.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Compose</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/mailbox/read-mail.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Read</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                   
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

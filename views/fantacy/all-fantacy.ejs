@@ -1,0 +1,168 @@
+<%- include("../layouts/adminHeader") %>
+
+<!-- Main Sidebar Container -->
+<%- include("../layouts/adminAside") %>
+
+<style>
+  .fancy_table span.vs {
+    display: flex;
+    width: 30px;
+    background: #dbebed;
+    height: 32px;
+    padding: 4px 7px;
+    border-radius: 50px;
+    margin-top: 11px;
+    margin-left: 5px;
+    margin-right: 8px;
+}
+.fancy_table .d-flex{
+  justify-content: space-around;
+}
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">All Fantacy</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <a class="mr-5" href="/add-fantacy"><button class="btn btn-primary">Add New <i class="fas fa-plus"></i></button></a>
+              <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+              <li class="breadcrumb-item active">All Fantacy</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <% if (code !==undefined) { %>
+          <% if (code===1) { %>
+            <div class="alert alert-success" role="alert">
+              <%= message %>
+            </div>
+            <% } else { %>
+              <div class="alert alert-danger" role="alert">
+                <%= message %>
+              </div>
+              <% } %>
+                <% } %>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Fantacy Details</h3>
+
+                          <div class="card-tools">
+                            <ul class="pagination pagination-sm float-right">
+                              <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                              <li class="page-item"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                          <table class="table fancy_table">
+                            <thead>
+                                
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Tournament name</th>
+                                    <th style="text-align: center;">VS</th>
+                                    <th>Venues/Time</th>
+                                    <th>Package</th>
+                                    <th>Visible</th>
+                                    <th style="width: 80px">Label</th>
+                                </tr>
+                            </thead>
+                          <% if(data !== undefined){%>
+                            <!-- <%-  typeof(data.fantacy) %> -->
+                              <!-- <%-  typeof(data.fantacy) %> -->
+                                <% data.forEach(function(reveFantacy) { %>
+                                  <tr>
+                                    <td><input type="checkbox" name="" id=""></td>
+                                    <td><%= reveFantacy.name %></td>
+                                    <td>
+                                      <div class="d-flex">
+                                        <span class="team">
+                                            <% if (reveFantacy.team_one && reveFantacy.team_one.logo) { %>
+                                                <img src="<%= reveFantacy.team_one.logo %>" width="60px" alt="">
+                                            <% } else { %>
+                                                <!-- Handle the case when team_one or its logo is not present -->
+                                                <span>No Logo</span>
+                                            <% } %>
+                                        </span>
+                                        <span class="vs">vs</span>
+                                        <span class="team">
+                                            <% if (reveFantacy.team_two && reveFantacy.team_two.logo) { %>
+                                                <img src="<%= reveFantacy.team_two.logo %>" width="60px" alt="">
+                                            <% } else { %>
+                                                <!-- Handle the case when team_two or its logo is not present -->
+                                                <span>No Logo</span>
+                                            <% } %>
+                                        </span>
+                                    </div>
+                                    
+                                    </td>
+                                    <td style="font-size: 14px; width: 320px;">
+                                      <span><i class="far fa-map"></i> <%= reveFantacy.venues %></span>
+                                       <br>
+                                       <span><i class="far fa-clock"></i> <%= reveFantacy.date_time %></span>
+                                    </td>
+                                    <td>
+                                        <% reveFantacy.attached_package.forEach(package => { %>
+                                            <% if(package.is_prime){ %>
+                                              <span class="badge badge-primary"><%= package.name %></span>
+                                            <% }else{ %>
+                                              <span class="badge badge-secondary"><%= package.name %></span>
+                                            <% } %>
+                                        <% }); %>
+                                    </td>
+                                    <td class="align-middle">
+                                      <% if(reveFantacy.is_active){%>
+                                        <button data-attr="fantacy" data-updadeactivate="update-fantacy/<%= reveFantacy._id %>" type="button" class="btn btn-sm btn-success">Publish</button>
+                                      <% }else{ %>
+                                        <button data-attr="fantacy" data-updaactive="update-fantacy/<%= reveFantacy._id %>" type="button" class="btn btn-sm btn-warning">Draft</button>
+                                      <% } %>
+                                    </td>
+                                    <td class="text-right py-0 align-middle" style="width: 80px">
+                                      <div class="btn-group btn-group-sm">
+                                        <a href="all-update-fantacy/<%= reveFantacy._id %>">
+                                          <button type="button" class="btn btn-info" ><i class="fas fa-edit"></i></button>
+                                        </a>
+                                        <button data-delid="all-fantacy/<%= reveFantacy._id %>" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                      </div>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            <% }else{ %>
+                            <p style="text-align: center;">No entries here</p>
+                          <% } %>
+
+                          </table>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+
+                      <!-- /.card -->
+                    </div>
+                  </div>
+                  <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<%- include("../layouts/adminFooter") %>

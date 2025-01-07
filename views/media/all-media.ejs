@@ -1,0 +1,115 @@
+<%- include("../layouts/adminHeader") %>
+
+    <!-- Main Sidebar Container -->
+    <%- include("../layouts/adminAside") %>
+
+
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Add Teams</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="dashboards">Home</a></li>
+                                <li class="breadcrumb-item active">All Media</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Simple Full Width Table</h3>
+
+                                    <div class="card-tools">
+                                        <ul class="pagination pagination-sm float-right">
+                                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                    <table class="table">
+                                        <thead>
+                                            
+                                            <tr>
+                                                <th style="width: 10px">#</th>
+                                                <th>Image</th>
+                                                <th>Name</th>
+                                                <th>Small</th>
+                                                <th>Large</th>
+                                                <th style="width: 80px">Label</th>
+                                            </tr>
+                                        </thead>
+                                        <% if(data.length > 0){%>
+                                        <tbody>
+                                            
+                                            <% data.forEach(function(media) { %>
+                                            <tr>
+                                                <td><input type="checkbox" name="" id=""></td>
+                                                <td><img  width="120" src="<%= media?.small_media %>" alt=""></td>
+                                                <td><%= media.name %><br> <br>
+                                                    <label for="">Image ID</label>
+                                                    <button data-link="<%= media._id %>" class="btn btn-info btn-outline button_cusom_icon"><i class="fas fa-copy"></i></button>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <button data-link="<%= media.small_media %>" class="btn btn-info btn-outline button_cusom_icon">Small Size <i class="fas fa-copy"></i></button>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <button data-link="<%= media.sma %>" class="btn btn-info btn-outline button_cusom_icon">Full Size <i class="fas fa-copy"></i></button>
+                                                </td>
+                                                <td class="text-right py-0 align-middle" style="width: 80px">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button data-editid="all-media/<%= media._id %>" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                                                        <button data-delid="all-media/<%= media._id %>" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                                      </div>
+                                                </td>
+
+                                            </tr>
+
+                                            <% }); %>
+                                        </tbody>
+                                        <% } else{%>
+                                            <tbody>
+                                              <tr>
+                                                <td colspan="1">
+                                                  <p style="text-align: center;">No entries here</p>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          <% } %>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+
+                            <!-- /.card -->
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+
+        <%- include("../layouts/adminFooter") %>

@@ -1,0 +1,136 @@
+<%- include("../layouts/adminHeader") %>
+
+<!-- Main Sidebar Container -->
+<%- include("../layouts/adminAside") %>
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">All Teams</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <a class="mr-5" href="/add-teams"><button class="btn btn-primary">Add New <i class="fas fa-plus"></i></button></a>
+              <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+              <li class="breadcrumb-item active">All Teams</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <% if (code !==undefined) { %>
+          <% if (code===1) { %>
+            <div class="alert alert-success" role="alert">
+              <%= message %>
+            </div>
+          <% } else { %>
+              <div class="alert alert-danger" role="alert">
+            <%= message %>
+              </div>
+          <% } %>
+        <% } %>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h3 class="card-title">Simple Full Width Table</h3>
+
+                      <div class="card-tools">
+                          <ul class="pagination pagination-sm float-right">
+                              <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                              <li class="page-item"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                      <table class="table">
+                          <thead>
+                              
+                              <tr>
+                                  <th style="width: 10px">#</th>
+                                  <th>Team Name</th>
+                                  <th>Logo</th>
+                                  <th>Contry Code</th>
+                                  <th>Created</th>
+                                  <th style="width: 80px">Label</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <% if(data !== undefined){%>
+                              <% data.forEach(function(teams) { %>
+                              <tr>
+                                  <td><input type="checkbox" name="" id=""></td>
+                                  <td><%= teams.team_name %></td>
+                                  <td><img width="66" src="<%= teams.logo %>" alt=""></td>
+                                  <td><%= teams.country_code %></td>
+                                  <td><%= teams.createdAt %></td>
+                                  <td class="text-right py-0 align-middle" style="width: 80px">
+                                      <div class="btn-group btn-group-sm">
+                                        <a href="all-update-teams/<%= teams._id %>?page=1">
+                                          <button type="button" class="btn btn-info" ><i class="fas fa-edit"></i></button>
+                                        </a>
+                                        <!-- <button data-editid="all-teams/<%= teams._id %>" class="btn btn-info"><i class="fas fa-edit"></i></button> -->
+                                        <button data-delid="all-teams/<%= teams._id %>" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                      </div>
+                                  </td>
+                              </tr>
+                              <% }); %>
+                           <% }%>
+                          </tbody>
+                      </table>
+                  </div>
+
+                  <!-- /.card-body -->
+              </div>
+
+              <!-- /.card -->
+          </div>
+      </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Default Modal</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>One fine body&hellip;</p>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+<%- include("../layouts/adminFooter") %>

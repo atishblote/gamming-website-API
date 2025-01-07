@@ -1,0 +1,245 @@
+<%- include("../layouts/adminHeader") %>
+
+  <!-- Main Sidebar Container -->
+<%- include("../layouts/adminAside") %>
+<style>
+    .card_cus {
+      width: 100%;
+    background: white;
+    border: 1px solid #e3e3e3;
+    text-align: center;
+    margin-right: 5%;
+    float: left;
+    position: relative;
+    margin-bottom: 40px;
+}
+span.real_amount {
+    font-size: 22px;
+    font-weight: bold;
+}
+.card_header_cus {
+    padding: 7px;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+}
+.amount {
+    padding: 14px;
+    font-size: 19px;
+}
+.card_cus p{
+  font-size: 16px;
+}
+.accent_btn {
+    background: #1976D2;
+    color: white;
+    letter-spacing: 0.5px;
+    width: auto;
+    border-radius: 50px;
+    padding: 7px 17px;
+    font-size: 14px;
+    margin: 0 auto;
+    border: 1px solid #1976D2;
+    display: flex;
+    column-gap: 7px;
+    align-items: center;
+    font-weight: 700;
+}
+.card_body_cus {
+    padding-bottom: 15px;
+}
+span.cross_amount {
+    text-decoration: line-through;
+}
+
+  </style>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Add Package</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="dashboards">Home</a></li>
+                <li class="breadcrumb-item active">All Package</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <% if (code !==undefined) { %>
+            <% if (code===1) { %>
+              <div class="alert alert-success" role="alert">
+                <%= message %>
+              </div>
+            <% } else { %>
+                <div class="alert alert-danger" role="alert">
+              <%= message %>
+                </div>
+            <% } %>
+          <% } %>
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-8">
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Package Details</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form  method="post" id="add_pack">
+                    <div class="row pl-4 pr-4">
+                        <div class="col-sm-6">
+                          <!-- text input -->
+                          <div class="form-group">
+                            <label>Package Name</label>
+                            <input type="text" name="name" id="name" class="form-control" required placeholder="Enter name">
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Package Price(in Rs)</label>
+                            <input type="number" name="price" id="price" class="form-control" required placeholder="Enter package price">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row pl-4 pr-4">
+                        <div class="col-sm-6">
+                          <!-- text input -->
+                          <div class="form-group">
+                            <label>Discount off text</label>
+                            <input type="text" name="offer" id="offer" class="form-control" required placeholder="Enter text  Eg. 40% off">
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Discounted Price(in Rs)</label>
+                            <input type="number" name="discounted_price"  id="discounted_price" class="form-control" required placeholder="Enter discounted price">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row pl-4 pr-4">
+                        <div class="col-sm-6">
+                          <!-- text input -->
+                          <div class="form-group">
+                            <label>Services Name</label>
+                            <input type="text" name="services" id="services" class="form-control" required placeholder="Enter Eg. Toss/ Match Winner/ All Fancy">
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Button link</label>
+                            <input type="text" name="button_link" id="button_link" class="form-control" required placeholder="Enter Redirect link">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row pl-4 pr-4">
+                        
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Recommended Package </label>
+                            <select name="is_prime" class="form-control" required>
+                                <option value="false">Yes</option>
+                                <option value="true">No</option>
+                              </select>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <!-- text input -->
+                            <div class="form-group">
+                              <label>Visible</label>
+                              <select name="is_active" class="form-control"  required>
+                                  <option value="false">Daft</option>
+                                  <option value="true">Publish</option>
+                                </select>
+                            </div>
+                          </div>
+                      
+                      </div>
+
+                      <div class="row pl-4 pr-4">
+                        <div class="col-sm-6">
+                            <!-- text input -->
+                            <div class="form-group">
+                              <label>Package Colour</label>
+                              <!-- <input type="text" name="pack_color" class="form-control" required placeholder="Select color"> -->
+                              <input type="color" id="pack_color" name="pack_color" id="" required>
+                              
+                              </div>
+                          </div>
+
+                       
+                      </div>
+
+                   
+                  <!-- /.card-body -->
+
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Preview</h3>
+
+                        <div class="card-tools">
+                            <div class="form-check form-switch">
+                                <select id="flexSwitchCheckDefault" class="form-control">
+                                    <option value="false">No</option>
+                                    <option value="true">Yes</option>
+                                </select>
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5">
+                        <div class="card_cus preview_switch">
+                            <div class="card_header_cus" style="background: gray;">
+                              
+                            </div>
+                            <div class="amount">
+                              <span class="cross_amount">₹</span>
+                              <span class="real_amount"> ₹</span>
+                              <sup class="sup"></sup>
+                            </div>
+                            <div class="card_body_cus">
+                              <p class="services"> </p>
+                              <a href="#">
+                                <button type="button" class="accent_btn">Buy Now</button>
+                              </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+
+    <%- include("../layouts/adminFooter") %>
